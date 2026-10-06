@@ -15,7 +15,7 @@ const occasions: Occasion[] = [
   { label: 'Madrinha', phrase: 'um vestido de madrinha', photo: photos.vestido7 },
   { label: 'Formatura', phrase: 'um vestido de formatura', photo: photos.vestido10 },
   { label: 'Noiva', phrase: 'um vestido de noiva', photo: photos.noiva3 },
-  { label: 'Festa junina', phrase: 'um vestido caipira', photo: photos.caipirinha1 },
+  { label: 'Festa junina', phrase: 'um vestido de festa junina', photo: photos.caipirinha1 },
   { label: 'Infantil', phrase: 'uma roupa pra minha filha', photo: photos.infantil1 },
   { label: 'Conserto', phrase: 'um conserto na minha roupa', photo: photos.daia },
 ]

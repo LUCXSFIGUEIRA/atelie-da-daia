@@ -36,7 +36,7 @@ const services: Service[] = [
   },
   {
     title: 'Festa junina',
-    text: 'Vestido caipira cheio de babado pra arrasar no arraiá.',
+    text: 'Vestido de festa junina cheio de babado pra arrasar no arraiá.',
     photo: photos.caipirinha4,
     className: 'h-[420px] lg:h-auto',
   },

@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: 'Faz roupa infantil e fantasia?',
-    a: 'Faço! Vestido de daminha, roupa de aniversário, fantasia de personagem e vestido caipira pra criançada.',
+    a: 'Faço! Vestido de daminha, roupa de aniversário, fantasia de personagem e vestido de festa junina pra criançada.',
   },
   {
     q: 'Onde fica o ateliê?',

@@ -17,11 +17,11 @@ const photo = (name: string, w: number, h: number, alt: string): Photo => ({
 export const photos = {
   daia: photo('Daia', 888, 897, 'Daia, costureira do ateliê, sorrindo e segurando uma tesoura de costura'),
 
-  caipirinha1: photo('caipirinha_1', 697, 891, 'Duas amigas em festa junina à noite com vestidos caipiras xadrez, um rosa e um azul'),
-  caipirinha2: photo('caipirinha_2', 570, 899, 'Cliente em festa junina com saia caipira xadrez bege e babados vermelhos'),
-  caipirinha3: photo('caipirinha_3', 585, 898, 'Cliente tirando selfie com vestido caipira xadrez azul com renda'),
-  caipirinha4: photo('caipirinha_4', 604, 895, 'Vestido caipira xadrez lilás com laços e renda, no manequim do ateliê'),
-  caipirinha5: photo('caipirinha_5', 741, 818, 'Vestido caipira xadrez preto e branco com babados e fitas pink, no manequim do ateliê'),
+  caipirinha1: photo('caipirinha_1', 697, 891, 'Duas amigas em festa junina à noite com vestidos de festa junina xadrez, um rosa e um azul'),
+  caipirinha2: photo('caipirinha_2', 570, 899, 'Cliente em festa junina com saia de festa junina xadrez bege e babados vermelhos'),
+  caipirinha3: photo('caipirinha_3', 585, 898, 'Cliente tirando selfie com vestido de festa junina xadrez azul com renda'),
+  caipirinha4: photo('caipirinha_4', 604, 895, 'Vestido de festa junina xadrez lilás com laços e renda, no manequim do ateliê'),
+  caipirinha5: photo('caipirinha_5', 741, 818, 'Vestido de festa junina xadrez preto e branco com babados e fitas pink, no manequim do ateliê'),
 
   infantil1: photo('infantil_1', 893, 875, 'Menina em ensaio de aniversário com vestido infantil roxo, sentada em manta de girassóis'),
   infantil2: photo('infantil_2', 894, 892, 'Bebê sorrindo com vestido amarelo de princesa e laço vermelho no cabelo'),
