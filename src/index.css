@@ -48,10 +48,13 @@ body {
   outline-offset: 4px;
 }
 
-/* Imagens nunca estouram o container */
-img {
-  max-width: 100%;
-  height: auto;
+/* Imagens nunca estouram o container.
+   Fica em @layer base para que classes do Tailwind (h-full etc.) possam sobrescrever. */
+@layer base {
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 /* Barra de rolagem da galeria no celular: discreta */
