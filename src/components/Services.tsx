@@ -43,7 +43,7 @@ const services: Service[] = [
 ]
 
 // Tipos de conserto exibidos como etiquetas no card amarelo
-const repairs = ['Barra e bainha', 'Ajuste de cintura', 'Troca de zíper', 'Reforma', 'Ajuste de vestido']
+const repairs = ['Barra', 'Ajuste de cintura', 'Troca de zíper', 'Reforma', 'Ajuste de vestido']
 
 /**
  * SERVIÇOS (solução em benefícios).

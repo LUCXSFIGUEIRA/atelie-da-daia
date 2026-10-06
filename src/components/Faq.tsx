@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: 'Que tipo de conserto você faz?',
-    a: 'Barra, bainha, ajuste de cintura, troca de zíper, reforma e o que mais sua roupa precisar. Na dúvida, manda uma foto que eu te falo.',
+    a: 'Barra, ajuste de cintura, troca de zíper, reforma e o que mais sua roupa precisar. Na dúvida, manda uma foto que eu te falo.',
   },
   {
     q: 'Quanto tempo demora?',
