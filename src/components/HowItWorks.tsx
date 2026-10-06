@@ -1,6 +1,8 @@
 import { useRef } from 'react'
-import { ChatCircleDots, Confetti, Ruler, type Icon } from '@phosphor-icons/react'
+import { ChatCircleDots, Confetti, Ruler, WhatsappLogo, type Icon } from '@phosphor-icons/react'
 import { gsap, useGSAP, MQ } from '../lib/gsap'
+import { CtaButton } from './ui/CtaButton'
+import { CTA_LABEL, WHATSAPP_URL } from '../data/site'
 import { photos, type Photo } from '../data/photos'
 
 type Step = { icon: Icon; title: string; text: string; photo: Photo }
@@ -110,16 +112,16 @@ export function HowItWorks() {
 
   return (
     <section id="como-funciona" ref={root} data-bg="blush" className="px-4 py-28 md:py-36 lg:py-0">
-      <div className="mx-auto grid max-w-6xl gap-12 lg:min-h-[100dvh] lg:grid-cols-2 lg:items-center lg:gap-16">
+      <div className="mx-auto grid max-w-6xl gap-12 lg:min-h-[100dvh] lg:grid-cols-2 lg:items-center lg:gap-16 lg:pt-24 lg:pb-8">
         <div>
           <h2
             data-head
-            className="font-display text-[clamp(2.25rem,4.6vw,4rem)] leading-[1.02] font-extrabold tracking-tight text-balance"
+            className="font-display text-[clamp(2.25rem,min(4.6vw,7dvh),4rem)] leading-[1.02] font-extrabold tracking-tight text-balance"
           >
             Do primeiro “oi” até a peça pronta.
           </h2>
 
-          <ol className="relative mt-12 space-y-10 pl-16">
+          <ol className="relative mt-10 space-y-8 pl-16 lg:mt-[4dvh] lg:space-y-[3dvh]">
             {/* Linha de progresso (preenche com o scroll no desktop) */}
             <span aria-hidden className="absolute top-3 bottom-3 left-[23px] hidden w-0.5 bg-ink/15 lg:block">
               <span data-line-fill className="block h-full w-full origin-top bg-ink" />
@@ -145,10 +147,17 @@ export function HowItWorks() {
               </li>
             ))}
           </ol>
+
+          {/* CTA logo após os passos: o primeiro passo já é chamar no WhatsApp */}
+          <div data-how-cta className="mt-10 pl-16 lg:mt-[4dvh]">
+            <CtaButton href={WHATSAPP_URL} icon={<WhatsappLogo weight="fill" className="size-6" />}>
+              {CTA_LABEL}
+            </CtaButton>
+          </div>
         </div>
 
         {/* Pilha de fotos que troca com a rolagem (desktop) */}
-        <div className="relative hidden h-[74dvh] max-h-[680px] lg:motion-safe:block">
+        <div className="relative hidden h-[min(72dvh,680px)] lg:motion-safe:block">
           {steps.map(({ title, photo }, i) => (
             <div
               key={title}

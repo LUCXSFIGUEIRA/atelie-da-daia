@@ -42,6 +42,9 @@ const services: Service[] = [
   },
 ]
 
+// Tipos de conserto exibidos como etiquetas no card amarelo
+const repairs = ['Barra e bainha', 'Ajuste de cintura', 'Troca de zíper', 'Reforma', 'Ajuste de vestido']
+
 /**
  * SERVIÇOS (solução em benefícios).
  * Fundo: lilás (data-bg="lilac").
@@ -87,6 +90,16 @@ export function Services() {
           duration: 1.4,
           ease: 'expo.out',
           scrollTrigger: { trigger: q('[data-grid]')[0], start: 'top 80%' },
+        })
+
+        // ANIMAÇÃO 2b: etiquetas de conserto "pulam" uma a uma
+        gsap.from(q('[data-repair]'), {
+          scale: 0.6,
+          autoAlpha: 0,
+          stagger: 0.07,
+          duration: 0.6,
+          ease: 'back.out(2)',
+          scrollTrigger: { trigger: '#consertos', start: 'top 80%' },
         })
 
         // ANIMAÇÃO 3
@@ -172,7 +185,7 @@ export function Services() {
             </article>
           ))}
 
-          {/* Card de consertos: largura total, sem foto (não há foto de conserto ainda) */}
+          {/* Card de consertos: largura total, sem foto. Os tipos de serviço viram etiquetas. */}
           <article
             id="consertos"
             data-card
@@ -189,8 +202,19 @@ export function Services() {
                 Consertos e ajustes de qualquer peça
               </h3>
               <p className="mt-4 max-w-[52ch] text-lg text-ink/85">
-                Barra, bainha, cintura, zíper, reforma. Sua roupa volta firme, bonita e do seu tamanho.
+                Sua roupa volta firme, bonita e do seu tamanho. Na dúvida, manda uma foto que a Daia te fala.
               </p>
+              <ul aria-label="Tipos de conserto" className="mt-6 flex flex-wrap gap-2">
+                {repairs.map((r) => (
+                  <li
+                    data-repair
+                    key={r}
+                    className="rounded-full border-2 border-ink/80 bg-white/60 px-4 py-1.5 text-[16px] font-semibold"
+                  >
+                    {r}
+                  </li>
+                ))}
+              </ul>
             </div>
             <CtaButton
               href={WHATSAPP_URL}

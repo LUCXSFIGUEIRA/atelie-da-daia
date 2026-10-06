@@ -66,12 +66,12 @@ export function Gallery() {
 
         // Parallax interno de cada foto, ligado ao movimento horizontal
         q('[data-gallery-img]').forEach((img) => {
-          gsap.set(img, { scale: 1.2 })
+          gsap.set(img, { scale: 1.06 }) // ampliação mínima: as fotos originais são pequenas
           gsap.fromTo(
             img,
-            { xPercent: -7 },
+            { xPercent: -2.5 },
             {
-              xPercent: 7,
+              xPercent: 2.5,
               ease: 'none',
               scrollTrigger: {
                 trigger: img.parentElement,
