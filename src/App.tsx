@@ -4,7 +4,7 @@ import { gsap, ScrollTrigger } from './lib/gsap'
 import { ScrollProgress } from './components/ScrollProgress'
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
-import { Marquee } from './components/Marquee'
+import { Occasions } from './components/Occasions'
 import { Problem } from './components/Problem'
 import { Services } from './components/Services'
 import { HowItWorks } from './components/HowItWorks'
@@ -58,7 +58,7 @@ export default function App() {
       {/* overflow-x-clip impede rolagem horizontal sem quebrar o "sticky" */}
       <main id="conteudo" className="w-full max-w-full overflow-x-clip">
         <Hero />
-        <Marquee />
+        <Occasions />
         <Problem />
         <Services />
         <HowItWorks />

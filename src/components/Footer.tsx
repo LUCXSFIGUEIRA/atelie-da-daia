@@ -1,5 +1,5 @@
 import { InstagramLogo, MapPin, Scissors, WhatsappLogo } from '@phosphor-icons/react'
-import { ADDRESS, INSTAGRAM_HANDLE, INSTAGRAM_URL, WHATSAPP_DISPLAY, WHATSAPP_URL } from '../data/site'
+import { ADDRESS, MAPS_URL, INSTAGRAM_HANDLE, INSTAGRAM_URL, WHATSAPP_DISPLAY, WHATSAPP_URL } from '../data/site'
 
 /**
  * RODAPÉ: contato, redes e direitos. Continua o bloco escuro do CTA final.
@@ -29,12 +29,12 @@ export function Footer() {
                   {WHATSAPP_DISPLAY}
                 </a>
               </li>
-              {ADDRESS && (
-                <li className="inline-flex items-start gap-2">
+              <li>
+                <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-2 hover:text-white">
                   <MapPin weight="fill" aria-hidden className="mt-1 size-5 shrink-0" />
-                  {ADDRESS}
-                </li>
-              )}
+                  <address className="not-italic">{ADDRESS}</address>
+                </a>
+              </li>
             </ul>
           </div>
 

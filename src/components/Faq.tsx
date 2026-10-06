@@ -6,7 +6,7 @@ import { CTA_LABEL, WHATSAPP_URL } from '../data/site'
 
 /**
  * Perguntas respondendo às principais objeções (preço, prazo, tipo de serviço, local).
- * [CONFIRMAR] prazos e endereço com a Daia antes de publicar.
+ * [CONFIRMAR] prazos com a Daia.
  */
 const faqs = [
   {
@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: 'Onde fica o ateliê?',
-    a: '[INSERIR ENDEREÇO / CIDADE]. Me chama no WhatsApp que eu mando a localização certinha.',
+    a: 'Na Av. Adalberto Rocha, 688, Centro, em Guareí-SP. Se precisar, me chama no WhatsApp que eu mando a localização.',
   },
 ]
 
