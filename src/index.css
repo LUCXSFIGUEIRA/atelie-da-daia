@@ -1,0 +1,115 @@
+@import 'tailwindcss';
+
+/* =========================================================
+   TOKENS DE MARCA
+   - ink: texto e fundos escuros
+   - blush, sun, lilac, mint: cores de fundo das seções (trocam no scroll)
+   - cta: cor de destaque, usada SOMENTE nos botões de ação
+   ========================================================= */
+@theme {
+  --font-display: 'Bricolage Grotesque Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Outfit Variable', ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #23102b;
+  --color-blush: #fff4f8;
+  --color-sun: #ffe15a;
+  --color-lilac: #e4d7ff;
+  --color-mint: #c6f0da;
+  --color-cta: #d90f6b;
+  --color-cta-dark: #a80a52;
+}
+
+html {
+  background: var(--color-blush);
+  color: var(--color-ink);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 1.0625rem; /* 17px: corpo sempre acima de 16px */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 1.125rem; /* 18px no desktop */
+  }
+}
+
+::selection {
+  background: var(--color-sun);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-ink);
+  outline-offset: 4px;
+}
+
+/* Imagens nunca estouram o container */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Barra de rolagem da galeria no celular: discreta */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================================================
+   ANIMAÇÃO: CTA final
+   - .cta-pulse: anel que pulsa atrás do botão (só transform + opacity)
+   - .cta-shine: brilho que percorre o botão
+   ========================================================= */
+@keyframes cta-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  70%,
+  100% {
+    transform: scale(1.35, 1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes cta-shine {
+  0%,
+  55% {
+    transform: translateX(-120%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(420%) skewX(-20deg);
+  }
+}
+
+.cta-pulse {
+  animation: cta-pulse 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.cta-shine {
+  animation: cta-shine 3.2s ease-in-out infinite;
+}
+
+/* Quem pede menos movimento no sistema não vê nenhuma animação contínua */
+@media (prefers-reduced-motion: reduce) {
+  .cta-pulse,
+  .cta-shine {
+    animation: none;
+    opacity: 0;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

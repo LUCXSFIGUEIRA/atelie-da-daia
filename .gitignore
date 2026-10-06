@@ -1,0 +1,6 @@
+node_modules
+dist
+# Skills locais do Claude Code
+.claude
+# PNGs originais (o site usa as versões otimizadas em public/img)
+img/
