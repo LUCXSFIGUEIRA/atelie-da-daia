@@ -95,12 +95,13 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Duas noivas em colunas desencontradas, com parallax em velocidades diferentes */}
+        {/* Duas noivas em colunas desencontradas, com parallax em velocidades diferentes.
+            Celular: só a foto principal, em largura total, para a noiva aparecer inteira. */}
         <div className="flex items-start gap-3 sm:gap-4 lg:col-span-6 lg:gap-5">
-          <div data-speed="6" className="w-[60%]">
+          <div data-speed="6" className="w-full sm:w-[60%]">
             <div
               data-hero-photo
-              className="h-[min(112vw,560px)] overflow-hidden rounded-[1.75rem] bg-ink shadow-[0_30px_60px_-28px_rgba(35,16,43,0.55)] lg:h-[min(78dvh,680px)]"
+              className="aspect-[4/5] overflow-hidden sm:aspect-auto sm:h-[min(112vw,560px)] rounded-[1.75rem] bg-ink shadow-[0_30px_60px_-28px_rgba(35,16,43,0.55)] lg:h-[min(78dvh,680px)]"
             >
               <img
                 src={photos.noiva4.src}
@@ -108,12 +109,12 @@ export function Hero() {
                 width={photos.noiva4.w}
                 height={photos.noiva4.h}
                 fetchPriority="high"
-                className="h-full w-full object-cover object-[46%_62%]"
+                className="h-full w-full object-cover object-[50%_100%] sm:object-[46%_62%]"
               />
             </div>
           </div>
 
-          <div data-speed="18" className="mt-[22%] w-[40%] lg:mt-[16%]">
+          <div data-speed="18" className="mt-[22%] hidden w-[40%] sm:block lg:mt-[16%]">
             <div
               data-hero-photo
               className="h-[min(76vw,380px)] overflow-hidden rounded-[1.75rem] shadow-[0_30px_60px_-28px_rgba(35,16,43,0.5)] lg:h-[min(54dvh,460px)]"
