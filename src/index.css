@@ -48,6 +48,11 @@ body {
   outline-offset: 4px;
 }
 
+/* Foto ampliada (fundo escuro): contorno de foco claro */
+dialog :focus-visible {
+  outline-color: #fff;
+}
+
 /* Imagens nunca estouram o container.
    Fica em @layer base para que classes do Tailwind (h-full etc.) possam sobrescrever. */
 @layer base {

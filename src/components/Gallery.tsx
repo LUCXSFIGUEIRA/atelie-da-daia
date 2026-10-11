@@ -1,9 +1,10 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { InstagramLogo } from '@phosphor-icons/react'
 import { gsap, useGSAP, MQ } from '../lib/gsap'
 import { CtaButton } from './ui/CtaButton'
 import { INSTAGRAM_URL } from '../data/site'
 import { photos, type Photo } from '../data/photos'
+import { Lightbox } from './Lightbox'
 
 /**
  * Fotos reais de clientes (a prova social disponível).
@@ -49,10 +50,12 @@ const gallery: { photo: Photo; size: string; align: string; wide?: boolean }[] =
  *   anda para a esquerda conforme a rolagem vertical. Cada foto tem parallax
  *   interno (containerAnimation), parecendo uma janela.
  * - Celular: faixa com arraste nativo (scroll-snap) e fotos entrando em cascata.
+ * - Clique/toque em uma foto abre a versão ampliada (Lightbox).
  */
 export function Gallery() {
   const root = useRef<HTMLElement>(null)
   const track = useRef<HTMLDivElement>(null)
+  const [expanded, setExpanded] = useState<number | null>(null)
 
   useGSAP(
     () => {
@@ -157,29 +160,43 @@ export function Gallery() {
           aria-label="Fotos de clientes do ateliê"
           className="scrollbar-none flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 lg:h-[72dvh] min-w-0 lg:gap-8 lg:px-0 lg:motion-safe:snap-none lg:motion-safe:overflow-visible lg:pb-0"
         >
-          {gallery.map(({ photo, size, align, wide }) => (
+          {gallery.map(({ photo, size, align, wide }, i) => (
             <li
               key={photo.src}
               data-gallery-item
-              className={`shrink-0 snap-center overflow-hidden rounded-[1.75rem] lg:max-h-none lg:w-auto lg:max-w-none ${
+              className={`shrink-0 snap-center overflow-hidden rounded-[1.75rem] has-[:focus-visible]:ring-4 has-[:focus-visible]:ring-ink lg:max-h-none lg:w-auto lg:max-w-none ${
                 wide
                   ? 'aspect-[3/2] w-[86vw] max-w-[460px] self-center'
                   : 'h-[62vh] max-h-[520px] w-[70vw] max-w-[340px] lg:aspect-[3/4]'
               } ${size} ${align}`}
             >
-              <img
-                data-gallery-img
-                src={photo.src}
-                alt={photo.alt}
-                width={photo.w}
-                height={photo.h}
-                loading="lazy"
-                className="h-full w-full object-cover object-[50%_25%]"
-              />
+              <button
+                type="button"
+                onClick={() => setExpanded(i)}
+                aria-label={`Ampliar foto: ${photo.alt}`}
+                className="block h-full w-full cursor-zoom-in"
+              >
+                <img
+                  data-gallery-img
+                  src={photo.src}
+                  alt=""
+                  width={photo.w}
+                  height={photo.h}
+                  loading="lazy"
+                  className="h-full w-full object-cover object-[50%_25%]"
+                />
+              </button>
             </li>
           ))}
         </ul>
       </div>
+
+      <Lightbox
+        photos={gallery.map((g) => g.photo)}
+        index={expanded}
+        onChange={setExpanded}
+        onClose={() => setExpanded(null)}
+      />
     </section>
   )
 }
