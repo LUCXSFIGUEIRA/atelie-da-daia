@@ -18,7 +18,7 @@ const services: Service[] = [
   {
     title: 'Vestidos de festa',
     text: 'Madrinha, formatura, aniversário. Um vestido que veste bem e faz você se sentir linda.',
-    photo: photos.vestido7,
+    photo: photos.vestido14,
     className: 'md:col-span-2 lg:row-span-2 h-[460px] md:h-[520px] lg:h-auto',
   },
   {
