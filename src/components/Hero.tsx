@@ -65,11 +65,11 @@ export function Hero() {
       id="topo"
       ref={root}
       data-bg="blush"
-      className="relative flex min-h-[100dvh] items-center px-4 pt-24 pb-16 lg:pb-10"
+      className="relative flex min-h-[100dvh] items-center px-4 pt-24 pb-16 max-sm:block max-sm:bg-black max-sm:px-0 max-sm:pb-0 lg:pb-10"
     >
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-12 lg:gap-10">
-        {/* Texto */}
-        <div className="lg:col-span-6">
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 max-sm:gap-0 lg:grid-cols-12 lg:gap-10">
+        {/* Texto. Celular: branco, por cima do céu escuro da foto */}
+        <div className="relative z-10 lg:col-span-6 max-sm:px-4 max-sm:text-white">
           <h1
             data-hero-title
             className="max-w-[18ch] font-display text-[clamp(2.4rem,4.4vw,3.75rem)] leading-[1.04] font-extrabold tracking-tight text-balance"
@@ -77,7 +77,7 @@ export function Hero() {
             Seu vestido de noiva, feito sob medida pela Daia.
           </h1>
 
-          <p data-hero-sub className="mt-6 max-w-[36ch] text-lg leading-relaxed text-ink/80 md:text-xl">
+          <p data-hero-sub className="mt-6 max-w-[36ch] text-lg leading-relaxed text-ink/80 max-sm:text-white/80 md:text-xl">
             Desenhado com você e ajustado prova a prova até o dia do sim. Também tem festa, infantil e consertos.
           </p>
 
@@ -87,7 +87,13 @@ export function Hero() {
                 {CTA_LABEL}
               </CtaButton>
             </div>
-            <div>
+            {/* Contorno escuro some no fundo preto do celular: lá usa a versão clara */}
+            <div className="sm:hidden">
+              <CtaButton href={INSTAGRAM_URL} variant="light" icon={<InstagramLogo weight="bold" className="size-6" />}>
+                Ver no Instagram
+              </CtaButton>
+            </div>
+            <div className="max-sm:hidden">
               <CtaButton href={INSTAGRAM_URL} variant="outline" icon={<InstagramLogo weight="bold" className="size-6" />}>
                 Ver no Instagram
               </CtaButton>
@@ -96,12 +102,12 @@ export function Hero() {
         </div>
 
         {/* Duas noivas em colunas desencontradas, com parallax em velocidades diferentes.
-            Celular: só a foto principal, em largura total, para a noiva aparecer inteira. */}
+            Celular: só a foto principal, sem corte, de ponta a ponta; o texto sobe por cima do céu escuro dela. */}
         <div className="flex items-start gap-3 sm:gap-4 lg:col-span-6 lg:gap-5">
-          <div data-speed="6" className="w-full sm:w-[60%]">
+          <div data-speed="6" className="w-full max-sm:-mt-[46vw] sm:w-[60%]">
             <div
               data-hero-photo
-              className="aspect-[4/5] overflow-hidden sm:aspect-auto sm:h-[min(112vw,560px)] rounded-[1.75rem] bg-ink shadow-[0_30px_60px_-28px_rgba(35,16,43,0.55)] lg:h-[min(78dvh,680px)]"
+              className="aspect-[2/3] overflow-hidden bg-black sm:aspect-auto sm:h-[min(112vw,560px)] sm:rounded-[1.75rem] sm:shadow-[0_30px_60px_-28px_rgba(35,16,43,0.55)] lg:h-[min(78dvh,680px)]"
             >
               <img
                 src={photos.noiva4.src}
@@ -109,7 +115,7 @@ export function Hero() {
                 width={photos.noiva4.w}
                 height={photos.noiva4.h}
                 fetchPriority="high"
-                className="h-full w-full object-cover object-[50%_100%] sm:object-[46%_62%]"
+                className="h-full w-full object-cover object-[46%_62%]"
               />
             </div>
           </div>
