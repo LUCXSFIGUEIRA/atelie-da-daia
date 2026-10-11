@@ -3,28 +3,41 @@ import { InstagramLogo } from '@phosphor-icons/react'
 import { gsap, useGSAP, MQ } from '../lib/gsap'
 import { CtaButton } from './ui/CtaButton'
 import { INSTAGRAM_URL } from '../data/site'
-import { photos } from '../data/photos'
+import { photos, type Photo } from '../data/photos'
 
 /**
  * Fotos reais de clientes (a prova social disponível).
  * Alturas alternadas criam um ritmo de "varal" na faixa horizontal.
+ * "wide: true" marca fotos deitadas (paisagem), que perderiam gente no recorte 3:4.
  */
-const gallery = [
+const gallery: { photo: Photo; size: string; align: string; wide?: boolean }[] = [
   { photo: photos.vestido8, size: 'lg:h-[64dvh]', align: 'lg:self-start' },
   { photo: photos.noivaENoivinha, size: 'lg:h-[50dvh]', align: 'lg:self-end' },
+  { photo: photos.vestido13, size: 'lg:h-[64dvh]', align: 'lg:self-start' },
   { photo: photos.caipirinha1, size: 'lg:h-[58dvh]', align: 'lg:self-center' },
   { photo: photos.vestido2, size: 'lg:h-[66dvh]', align: 'lg:self-start' },
+  { photo: photos.maeEFilha1, size: 'lg:h-[50dvh]', align: 'lg:self-center' },
   { photo: photos.infantil1, size: 'lg:h-[48dvh]', align: 'lg:self-end' },
+  { photo: photos.vestido12, size: 'lg:h-[66dvh]', align: 'lg:self-start' },
   { photo: photos.vestido6, size: 'lg:h-[62dvh]', align: 'lg:self-center' },
+  { photo: photos.vestido3, size: 'lg:h-[58dvh]', align: 'lg:self-start' },
   { photo: photos.noiva3, size: 'lg:h-[66dvh]', align: 'lg:self-end' },
+  { photo: photos.noiva1, size: 'lg:h-[60dvh]', align: 'lg:self-center' },
+  { photo: photos.infantil6, size: 'lg:h-[44dvh]', align: 'lg:self-start', wide: true },
+  { photo: photos.vestido11, size: 'lg:h-[62dvh]', align: 'lg:self-center' },
   { photo: photos.caipirinha2, size: 'lg:h-[52dvh]', align: 'lg:self-start' },
   { photo: photos.vestido10, size: 'lg:h-[60dvh]', align: 'lg:self-center' },
+  { photo: photos.infantil8, size: 'lg:h-[54dvh]', align: 'lg:self-start' },
   { photo: photos.infantil4, size: 'lg:h-[56dvh]', align: 'lg:self-end' },
   { photo: photos.vestido1, size: 'lg:h-[64dvh]', align: 'lg:self-start' },
+  { photo: photos.maeEFilha2, size: 'lg:h-[58dvh]', align: 'lg:self-end' },
   { photo: photos.caipirinha5, size: 'lg:h-[50dvh]', align: 'lg:self-center' },
+  { photo: photos.infantil2, size: 'lg:h-[48dvh]', align: 'lg:self-start' },
   { photo: photos.vestido5, size: 'lg:h-[62dvh]', align: 'lg:self-end' },
+  { photo: photos.vestido14, size: 'lg:h-[64dvh]', align: 'lg:self-center' },
   { photo: photos.infantil5, size: 'lg:h-[54dvh]', align: 'lg:self-start' },
   { photo: photos.caipirinha3, size: 'lg:h-[60dvh]', align: 'lg:self-center' },
+  { photo: photos.infantil7, size: 'lg:h-[56dvh]', align: 'lg:self-end' },
 ]
 
 /**
@@ -144,11 +157,15 @@ export function Gallery() {
           aria-label="Fotos de clientes do ateliê"
           className="scrollbar-none flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 lg:h-[72dvh] min-w-0 lg:gap-8 lg:px-0 lg:motion-safe:snap-none lg:motion-safe:overflow-visible lg:pb-0"
         >
-          {gallery.map(({ photo, size, align }) => (
+          {gallery.map(({ photo, size, align, wide }) => (
             <li
               key={photo.src}
               data-gallery-item
-              className={`h-[62vh] max-h-[520px] w-[70vw] max-w-[340px] shrink-0 snap-center overflow-hidden rounded-[1.75rem] lg:max-h-none lg:w-auto lg:max-w-none lg:aspect-[3/4] ${size} ${align}`}
+              className={`shrink-0 snap-center overflow-hidden rounded-[1.75rem] lg:max-h-none lg:w-auto lg:max-w-none ${
+                wide
+                  ? 'aspect-[3/2] w-[86vw] max-w-[460px] self-center'
+                  : 'h-[62vh] max-h-[520px] w-[70vw] max-w-[340px] lg:aspect-[3/4]'
+              } ${size} ${align}`}
             >
               <img
                 data-gallery-img

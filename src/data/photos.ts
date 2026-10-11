@@ -1,5 +1,5 @@
 /**
- * Catálogo das fotos reais do ateliê (convertidas para WebP em /public/img).
+ * Catálogo das fotos reais do ateliê (em /public/img; WebP por padrão, JPG quando indicado).
  * Para trocar uma foto: substitua o arquivo em /public/img mantendo o nome,
  * ou altere o nome aqui. Sempre mantenha um "alt" descritivo (SEO + acessibilidade).
  */
@@ -7,8 +7,8 @@ export type Photo = { src: string; alt: string; w: number; h: number }
 
 const base = import.meta.env.BASE_URL
 
-const photo = (name: string, w: number, h: number, alt: string): Photo => ({
-  src: `${base}img/${name}.webp`,
+const photo = (name: string, w: number, h: number, alt: string, ext: 'webp' | 'jpg' = 'webp'): Photo => ({
+  src: `${base}img/${name}.${ext}`,
   w,
   h,
   alt,
@@ -28,10 +28,17 @@ export const photos = {
   infantil3: photo('infantil_3', 872, 900, 'Bebê com fantasia de príncipe azul com detalhes dourados e coroa'),
   infantil4: photo('infantil_4', 476, 896, 'Criança com fantasia de encanador, macacão azul e camiseta vermelha, no ateliê'),
   infantil5: photo('infantil_5', 609, 860, 'Menino com conjunto azul de capuz com orelhinhas, no ateliê'),
+  infantil6: photo('infantil_6', 1079, 718, 'Duas crianças fantasiadas de Masha e o Urso, sentadas na mata', 'jpg'),
+  infantil7: photo('infantil_7', 1070, 1599, 'Irmãos com roupas de Natal vermelhas e brancas, ele de Papai Noel e ela de vestido com gola de pelúcia', 'jpg'),
+  infantil8: photo('infantil_8', 1200, 1600, 'Menina sorrindo com vestido rosa de cetim, mangas bufantes e corpo de renda', 'jpg'),
+
+  maeEFilha1: photo('mae_e_filha_1', 542, 728, 'Mãe e filha de mãos dadas na mata, com vestidos iguais de renda rosa', 'jpg'),
+  maeEFilha2: photo('mae_e_filha_2', 960, 1200, 'Mãe e filha com blusas iguais de oncinha laranja, em uma estrada de terra', 'jpg'),
 
   noiva1: photo('noiva_1', 663, 859, 'Noiva de costas com vestido branco ombro a ombro e cauda de renda, em evento à noite'),
   noiva2: photo('noiva_2', 670, 849, 'Noiva sorrindo com vestido branco de mangas bufantes e buquê de rosas'),
   noiva3: photo('noiva_3', 713, 902, 'Noiva com vestido de renda de mangas longas e saia rodada, segurando buquê vermelho'),
+  noiva4: photo('noiva_4', 1066, 1600, 'Noiva olhando por cima do ombro, com vestido branco ombro a ombro, barra de renda e cauda, em um deck à noite', 'jpg'),
   noivaENoivinha: photo('noiva_e_noivinha', 880, 880, 'Noiva de mãos dadas com uma daminha, as duas com vestidos brancos de renda'),
 
   vestido1: photo('vestido', 684, 898, 'Cliente com vestido longo preto com fenda em uma festa'),
@@ -44,4 +51,8 @@ export const photos = {
   vestido8: photo('vestido_8', 676, 899, 'Cliente com vestido longo lilás brilhante em festa ao ar livre'),
   vestido9: photo('vestido_9', 809, 907, 'Cliente tirando selfie com vestido longo azul royal frente única com fenda'),
   vestido10: photo('vestido_10', 775, 886, 'Cliente com vestido preto ombro a ombro com fenda, em uma biblioteca'),
+  vestido11: photo('vestido_11', 960, 1280, 'Cliente de costas olhando por cima do ombro, com vestido longo de cetim azul royal', 'jpg'),
+  vestido12: photo('vestido_12', 1066, 1600, 'Cliente com vestido longo azul de poá com fenda, à beira de um lago ao pôr do sol', 'jpg'),
+  vestido13: photo('vestido_13', 1200, 1600, 'Madrinha com vestido longo rosé ombro a ombro com fenda, em um jardim à beira do lago', 'jpg'),
+  vestido14: photo('vestido_14', 1223, 1600, 'Cliente com vestido longo rosa com corpo de renda bordada e fenda', 'jpg'),
 } satisfies Record<string, Photo>
